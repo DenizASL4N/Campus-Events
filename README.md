@@ -11,6 +11,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/DenizASL4N/Campus-Events/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/DenizASL4N/Campus-Events/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Flutter 3.47.6" src="https://img.shields.io/badge/Flutter-3.47.6-02569B?logo=flutter">
   <img alt="Dart 3.13" src="https://img.shields.io/badge/Dart-3.13-0175C2?logo=dart">
   <img alt="Platform: Android" src="https://img.shields.io/badge/platform-Android-3DDC84?logo=android">
@@ -54,8 +55,8 @@ Requirements: [Flutter](https://docs.flutter.dev/get-started/install) 3.47.6
 (stable) and an Android emulator or device.
 
 ```bash
-git clone <repository-url>
-cd campus_event_explorer
+git clone https://github.com/DenizASL4N/Campus-Events.git
+cd Campus-Events
 flutter pub get
 flutter run
 ```
