@@ -24,6 +24,14 @@
   <img src="docs/screenshots/09_turkish.png" width="200" alt="Turkish">
 </p>
 
+## Download
+
+Download the Android app (APK) from the
+[latest release](https://github.com/DenizASL4N/Campus-Events/releases/latest)
+and open it on your phone. Requires Android 7.0 or newer. Because the app is
+not installed from Google Play, Android asks you to allow installing apps
+from your browser or file manager the first time.
+
 ## Features
 
 - **Explore events**: cards with an illustration, calendar date tile,
