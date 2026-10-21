@@ -44,5 +44,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Release APKs are published on GitHub Releases, not committed
+/release/
+*.apk
+
 # Widget Preview related
 .widget_preview/
