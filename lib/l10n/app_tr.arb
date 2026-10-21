@@ -48,5 +48,22 @@
   "yes": "Evet",
   "joinedMessage": "\"{title}\" etkinliğine katıldın.",
   "fullMessage": "Üzgünüz, \"{title}\" dolu.",
-  "cancelledMessage": "\"{title}\" etkinliğine katılımın iptal edildi."
+  "cancelledMessage": "\"{title}\" etkinliğine katılımın iptal edildi.",
+  "addEvent": "Etkinlik ekle",
+  "newEvent": "Yeni etkinlik",
+  "fieldTitle": "Başlık",
+  "fieldCategory": "Kategori",
+  "fieldImage": "Görsel",
+  "fieldCapacity": "Kontenjan",
+  "fieldDescription": "Açıklama (isteğe bağlı)",
+  "requiredField": "Bu alan zorunlu",
+  "invalidCapacity": "1 ile 1000 arasında bir sayı gir",
+  "pastDate": "İleri bir tarih ve saat seç",
+  "saveEvent": "Etkinliği kaydet",
+  "eventAdded": "\"{title}\" eklendi.",
+  "deleteEvent": "Etkinliği sil",
+  "deleteQuestion": "Bu etkinliği silmek istiyor musun?",
+  "eventDeleted": "\"{title}\" silindi.",
+  "createdByYou": "Senin etkinliğin",
+  "noDescription": "Açıklama yok."
 }

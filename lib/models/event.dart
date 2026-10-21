@@ -6,6 +6,9 @@ enum EventCategory { technology, arts, sports }
 class LocalizedText {
   const LocalizedText({required this.en, required this.tr});
 
+  /// The same text in every language (used for events the user creates).
+  const LocalizedText.same(String text) : en = text, tr = text;
+
   final String en;
   final String tr;
 
@@ -28,9 +31,41 @@ class Event {
     required this.imagePath,
     required this.capacity,
     required int availablePlaces,
+    this.isCustom = false,
   }) : assert(capacity > 0),
        assert(availablePlaces >= 0 && availablePlaces <= capacity),
        _availablePlaces = availablePlaces;
+
+  /// Restores an event the user created (see [toJson]). It starts with all
+  /// places free; joined events take their place again when they are loaded.
+  factory Event.fromJson(Map<String, dynamic> json) {
+    final capacity = json['capacity'] as int;
+    return Event(
+      id: json['id'] as String,
+      title: LocalizedText.same(json['title'] as String),
+      category: EventCategory.values.byName(json['category'] as String),
+      dateTime: DateTime.parse(json['dateTime'] as String),
+      venue: LocalizedText.same(json['venue'] as String),
+      description: LocalizedText.same(json['description'] as String),
+      imagePath: json['imagePath'] as String,
+      capacity: capacity,
+      availablePlaces: capacity,
+      isCustom: true,
+    );
+  }
+
+  /// Only used for events the user created; their texts are the same in
+  /// every language.
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'title': title.en,
+    'category': category.name,
+    'dateTime': dateTime.toIso8601String(),
+    'venue': venue.en,
+    'description': description.en,
+    'imagePath': imagePath,
+    'capacity': capacity,
+  };
 
   final String id;
   final LocalizedText title;
@@ -40,6 +75,9 @@ class Event {
   final LocalizedText description;
   final String imagePath;
   final int capacity;
+
+  /// True for events the user added; only these can be deleted.
+  final bool isCustom;
 
   int _availablePlaces;
 

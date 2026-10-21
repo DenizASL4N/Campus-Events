@@ -1,5 +1,22 @@
 import '../models/event.dart';
 
+/// Illustrations the user can choose from when creating an event, with the
+/// default one for each category.
+const eventImages = [
+  'assets/images/flutter_workshop.png',
+  'assets/images/ai_panel.png',
+  'assets/images/photography_exhibition.png',
+  'assets/images/choir_concert.png',
+  'assets/images/basketball_final.png',
+  'assets/images/campus_run.png',
+];
+
+const defaultImageFor = {
+  EventCategory.technology: 'assets/images/flutter_workshop.png',
+  EventCategory.arts: 'assets/images/choir_concert.png',
+  EventCategory.sports: 'assets/images/campus_run.png',
+};
+
 /// Fictional campus events, in English and Turkish.
 ///
 /// - e3 starts full (0 places left).

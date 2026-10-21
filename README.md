@@ -39,8 +39,11 @@
 - **Join and cancel**: confirmation dialogs show the event's title, time and
   venue. Joining takes exactly one place; cancelling gives it back. Full
   events cannot be joined, but you can always cancel a place you hold.
-- **Remembers your choices**: favorites and joined events are saved on the
-  device and restored on the next launch.
+- **Create your own events**: an *Add event* form with an illustration
+  picker, category, date and time pickers, venue, capacity and an optional
+  description, with validation. Events you created can be deleted.
+- **Remembers your choices**: favorites, joined events and the events you
+  created are saved on the device and restored on the next launch.
 - **English and Turkish**: follows the phone language, including event texts
   and date formats.
 - **Light and dark mode**: follows the phone setting.
@@ -70,8 +73,8 @@ flutter test
   favorites, joined events and the shared search/category filter. Screens and
   widgets get data and callbacks from it and update with `setState`; no state
   management library is needed at this size.
-- **Persistence:** `EventStorage` saves favorite and joined event IDs with
-  `shared_preferences`. On start the joined events take their places again,
+- **Persistence:** `EventStorage` saves favorite and joined event IDs and the
+  events you created (as JSON) with `shared_preferences`. On start the joined events take their places again,
   so capacities stay consistent.
 - **Localization:** UI strings live in `lib/l10n/app_en.arb` and
   `app_tr.arb` (Flutter `gen-l10n`); event texts use a small `LocalizedText`
@@ -87,12 +90,13 @@ lib/
   models/event.dart              Event, EventCategory, LocalizedText
   data/
     sample_events.dart           Six fictional events (EN + TR)
-    event_storage.dart           Saves favorites and joined events
+    event_storage.dart           Saves favorites, joined and created events
   l10n/                          .arb translations and helpers
   theme/                         App theme, category colours and icons
   screens/
     home_screen.dart             Explore / Favorites / My Events
-    event_details_screen.dart    Details, favorite, join/cancel dialogs
+    event_details_screen.dart    Details, favorite, join/cancel, delete
+    add_event_screen.dart        Form for creating an event
     image_viewer_screen.dart     Zoomable full-screen image
   widgets/                       Event card, search bar, badges, ...
   utils/date_format.dart         Locale-aware date/time formatting
@@ -110,9 +114,13 @@ test/                            Unit and widget tests
 |---|---|---|---|
 | <img src="docs/screenshots/01_explore.png" width="190"> | <img src="docs/screenshots/02_details.png" width="190"> | <img src="docs/screenshots/03_favorites.png" width="190"> | <img src="docs/screenshots/04_my_events.png" width="190"> |
 
-| Cancel dialog | Full event | No results | Dark mode | Turkish |
-|---|---|---|---|---|
-| <img src="docs/screenshots/05_cancel_dialog.png" width="150"> | <img src="docs/screenshots/06_full_event.png" width="150"> | <img src="docs/screenshots/07_empty_search.png" width="150"> | <img src="docs/screenshots/08_dark_mode.png" width="150"> | <img src="docs/screenshots/09_turkish.png" width="150"> |
+| Add event | Cancel dialog | Full event | No results |
+|---|---|---|---|
+| <img src="docs/screenshots/10_add_event.png" width="190"> | <img src="docs/screenshots/05_cancel_dialog.png" width="190"> | <img src="docs/screenshots/06_full_event.png" width="190"> | <img src="docs/screenshots/07_empty_search.png" width="190"> |
+
+| Dark mode | Turkish |
+|---|---|
+| <img src="docs/screenshots/08_dark_mode.png" width="190"> | <img src="docs/screenshots/09_turkish.png" width="190"> |
 
 ## Tests
 
@@ -125,6 +133,7 @@ test/                            Unit and widget tests
   last-place case,
 - favorites staying in sync across tabs and the details screen,
 - the double-tap image viewer,
+- creating events (validation, saving, restoring, joining, deleting),
 - restoring saved favorites and joined events,
 - Turkish language and dark mode.
 

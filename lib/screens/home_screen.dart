@@ -8,6 +8,7 @@ import '../theme/app_theme.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/event_card.dart';
 import '../widgets/search_filter_bar.dart';
+import 'add_event_screen.dart';
 import 'event_details_screen.dart';
 import '../l10n/l10n.dart';
 
@@ -45,11 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
     _restore();
   }
 
-  /// Loads favorites and joined events saved in an earlier session.
+  /// Loads created events, favorites and joined events saved in an earlier
+  /// session.
   Future<void> _restore() async {
     final saved = await _storage.load();
     if (!mounted) return;
     setState(() {
+      _events.insertAll(0, saved.customEvents);
       _favoriteIds.addAll(saved.favorites);
       for (final event in _events) {
         if (saved.joined.contains(event.id) && event.takePlace()) {
@@ -60,7 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _persist() {
-    _storage.save(favorites: _favoriteIds, joined: _joinedIds);
+    _storage.save(
+      favorites: _favoriteIds,
+      joined: _joinedIds,
+      customEvents: _events.where((e) => e.isCustom).toList(),
+    );
   }
 
   @override
@@ -129,6 +136,36 @@ class _HomeScreenState extends State<HomeScreen> {
     _persist();
   }
 
+  /// Opens the form; a saved event is added to the top of the list.
+  Future<void> _addEvent() async {
+    final event = await Navigator.of(context)
+        .push<Event>(MaterialPageRoute(builder: (_) => const AddEventScreen()));
+    if (event == null || !mounted) return;
+    setState(() {
+      _events.insert(0, event);
+      _currentTab = HomeTab.explore;
+    });
+    _clearAllFilters();
+    _persist();
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: Text(context.l10n.eventAdded(event.title.of(context))),
+        ),
+      );
+  }
+
+  /// Removes an event the user created, with its favorite and participation.
+  void _deleteEvent(Event event) {
+    setState(() {
+      _events.remove(event);
+      _favoriteIds.remove(event.id);
+      _joinedIds.remove(event.id);
+    });
+    _persist();
+  }
+
   void _openDetails(Event event) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -139,6 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onToggleFavorite: () => _toggleFavorite(event),
           onJoin: () => _join(event),
           onCancel: () => _cancel(event),
+          onDelete: event.isCustom ? () => _deleteEvent(event) : null,
         ),
       ),
     );
@@ -149,6 +187,15 @@ class _HomeScreenState extends State<HomeScreen> {
     final events = _visibleEvents;
 
     return Scaffold(
+      floatingActionButton: _currentTab == HomeTab.explore
+          ? FloatingActionButton.extended(
+              onPressed: _addEvent,
+              backgroundColor: AppColors.primary,
+              foregroundColor: Colors.white,
+              icon: const Icon(Icons.add_rounded),
+              label: Text(context.l10n.addEvent),
+            )
+          : null,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -173,7 +220,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: events.isEmpty
                 ? _buildEmptyState()
                 : ListView.builder(
-                    padding: const EdgeInsets.only(top: 4, bottom: 16),
+                    // Bottom space so the add button never hides a card.
+                    padding: const EdgeInsets.only(top: 4, bottom: 96),
                     itemCount: events.length,
                     itemBuilder: (context, index) {
                       final event = events[index];

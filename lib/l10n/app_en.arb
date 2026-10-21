@@ -8,7 +8,13 @@
   "headerMyEventsTitle": "Your events",
   "headerMyEventsSubtitle": "Events you are joining",
   "joinedCount": "Joined: {count}",
-  "@joinedCount": { "placeholders": { "count": { "type": "int" } } },
+  "@joinedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "searchHint": "Search events by title",
   "clearSearch": "Clear search",
   "categoryAll": "All",
@@ -16,7 +22,13 @@
   "categoryArts": "Arts",
   "categorySports": "Sports",
   "eventsFound": "{count, plural, =1{1 event found} other{{count} events found}}",
-  "@eventsFound": { "placeholders": { "count": { "type": "int" } } },
+  "@eventsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "navExplore": "Explore",
   "navFavorites": "Favorites",
   "navMyEvents": "My Events",
@@ -36,17 +48,37 @@
   "statusFull": "Full",
   "statusOnePlaceLeft": "Only 1 place left",
   "statusPlacesLeft": "{count} places left",
-  "@statusPlacesLeft": { "placeholders": { "count": { "type": "int" } } },
+  "@statusPlacesLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "dateLabel": "Date",
   "timeLabel": "Time",
   "venueLabel": "Venue",
   "availablePlaces": "Available places: {available} of {capacity}",
   "@availablePlaces": {
-    "placeholders": { "available": { "type": "int" }, "capacity": { "type": "int" } }
+    "placeholders": {
+      "available": {
+        "type": "int"
+      },
+      "capacity": {
+        "type": "int"
+      }
+    }
   },
   "placesTaken": "{taken} of {capacity} places taken",
   "@placesTaken": {
-    "placeholders": { "taken": { "type": "int" }, "capacity": { "type": "int" } }
+    "placeholders": {
+      "taken": {
+        "type": "int"
+      },
+      "capacity": {
+        "type": "int"
+      }
+    }
   },
   "aboutEvent": "About this event",
   "joinEvent": "Join event",
@@ -56,9 +88,58 @@
   "no": "No",
   "yes": "Yes",
   "joinedMessage": "You joined \"{title}\".",
-  "@joinedMessage": { "placeholders": { "title": { "type": "String" } } },
+  "@joinedMessage": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "fullMessage": "Sorry, \"{title}\" is already full.",
-  "@fullMessage": { "placeholders": { "title": { "type": "String" } } },
+  "@fullMessage": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "cancelledMessage": "Your participation in \"{title}\" was cancelled.",
-  "@cancelledMessage": { "placeholders": { "title": { "type": "String" } } }
+  "@cancelledMessage": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "addEvent": "Add event",
+  "newEvent": "New event",
+  "fieldTitle": "Title",
+  "fieldCategory": "Category",
+  "fieldImage": "Image",
+  "fieldCapacity": "Capacity",
+  "fieldDescription": "Description (optional)",
+  "requiredField": "This field is required",
+  "invalidCapacity": "Enter a number between 1 and 1000",
+  "pastDate": "Choose a date and time in the future",
+  "saveEvent": "Save event",
+  "eventAdded": "\"{title}\" was added.",
+  "@eventAdded": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteEvent": "Delete event",
+  "deleteQuestion": "Delete this event?",
+  "eventDeleted": "\"{title}\" was deleted.",
+  "@eventDeleted": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "createdByYou": "Created by you",
+  "noDescription": "No description."
 }

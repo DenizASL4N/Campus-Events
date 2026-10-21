@@ -25,6 +25,7 @@ class EventDetailsScreen extends StatefulWidget {
     required this.onToggleFavorite,
     required this.onJoin,
     required this.onCancel,
+    this.onDelete,
   });
 
   final Event event;
@@ -35,6 +36,9 @@ class EventDetailsScreen extends StatefulWidget {
   /// Joins the event; returns false if it could not be joined.
   final bool Function() onJoin;
   final VoidCallback onCancel;
+
+  /// Set only for events the user created; shows a delete button.
+  final VoidCallback? onDelete;
 
   @override
   State<EventDetailsScreen> createState() => _EventDetailsScreenState();
@@ -146,6 +150,20 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
     );
   }
 
+  Future<void> _delete() async {
+    if (!await _confirm(
+          context.l10n.deleteQuestion,
+          Icons.delete_outline_rounded,
+        ) ||
+        !mounted) {
+      return;
+    }
+    final title = _event.title.of(context);
+    widget.onDelete!();
+    _showMessage(context.l10n.eventDeleted(title), Icons.delete_rounded);
+    Navigator.of(context).pop();
+  }
+
   Future<void> _cancel() async {
     if (!await _confirm(
           context.l10n.cancelQuestion,
@@ -191,6 +209,12 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
       foregroundColor: Colors.white,
       title: Text(context.l10n.eventDetails),
       actions: [
+        if (widget.onDelete != null)
+          IconButton(
+            tooltip: context.l10n.deleteEvent,
+            icon: const Icon(Icons.delete_outline_rounded),
+            onPressed: _delete,
+          ),
         Padding(
           padding: const EdgeInsets.only(right: 8),
           child: CircleAvatar(
@@ -292,6 +316,12 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
             children: [
               CategoryPill(category: _event.category),
               AvailabilityLabel(event: _event, isJoined: isJoined),
+              if (_event.isCustom)
+                Chip(
+                  avatar: const Icon(Icons.person_rounded, size: 16),
+                  label: Text(l10n.createdByYou),
+                  visualDensity: VisualDensity.compact,
+                ),
             ],
           ),
           const SizedBox(height: 12),
@@ -345,7 +375,9 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            _event.description.of(context),
+            _event.description.of(context).isEmpty
+                ? l10n.noDescription
+                : _event.description.of(context),
             style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
           ),
         ],

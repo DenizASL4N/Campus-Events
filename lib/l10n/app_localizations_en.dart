@@ -178,4 +178,59 @@ class AppLocalizationsEn extends AppLocalizations {
   String cancelledMessage(String title) {
     return 'Your participation in \"$title\" was cancelled.';
   }
+
+  @override
+  String get addEvent => 'Add event';
+
+  @override
+  String get newEvent => 'New event';
+
+  @override
+  String get fieldTitle => 'Title';
+
+  @override
+  String get fieldCategory => 'Category';
+
+  @override
+  String get fieldImage => 'Image';
+
+  @override
+  String get fieldCapacity => 'Capacity';
+
+  @override
+  String get fieldDescription => 'Description (optional)';
+
+  @override
+  String get requiredField => 'This field is required';
+
+  @override
+  String get invalidCapacity => 'Enter a number between 1 and 1000';
+
+  @override
+  String get pastDate => 'Choose a date and time in the future';
+
+  @override
+  String get saveEvent => 'Save event';
+
+  @override
+  String eventAdded(String title) {
+    return '\"$title\" was added.';
+  }
+
+  @override
+  String get deleteEvent => 'Delete event';
+
+  @override
+  String get deleteQuestion => 'Delete this event?';
+
+  @override
+  String eventDeleted(String title) {
+    return '\"$title\" was deleted.';
+  }
+
+  @override
+  String get createdByYou => 'Created by you';
+
+  @override
+  String get noDescription => 'No description.';
 }

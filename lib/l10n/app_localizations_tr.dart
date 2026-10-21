@@ -173,4 +173,59 @@ class AppLocalizationsTr extends AppLocalizations {
   String cancelledMessage(String title) {
     return '\"$title\" etkinliğine katılımın iptal edildi.';
   }
+
+  @override
+  String get addEvent => 'Etkinlik ekle';
+
+  @override
+  String get newEvent => 'Yeni etkinlik';
+
+  @override
+  String get fieldTitle => 'Başlık';
+
+  @override
+  String get fieldCategory => 'Kategori';
+
+  @override
+  String get fieldImage => 'Görsel';
+
+  @override
+  String get fieldCapacity => 'Kontenjan';
+
+  @override
+  String get fieldDescription => 'Açıklama (isteğe bağlı)';
+
+  @override
+  String get requiredField => 'Bu alan zorunlu';
+
+  @override
+  String get invalidCapacity => '1 ile 1000 arasında bir sayı gir';
+
+  @override
+  String get pastDate => 'İleri bir tarih ve saat seç';
+
+  @override
+  String get saveEvent => 'Etkinliği kaydet';
+
+  @override
+  String eventAdded(String title) {
+    return '\"$title\" eklendi.';
+  }
+
+  @override
+  String get deleteEvent => 'Etkinliği sil';
+
+  @override
+  String get deleteQuestion => 'Bu etkinliği silmek istiyor musun?';
+
+  @override
+  String eventDeleted(String title) {
+    return '\"$title\" silindi.';
+  }
+
+  @override
+  String get createdByYou => 'Senin etkinliğin';
+
+  @override
+  String get noDescription => 'Açıklama yok.';
 }

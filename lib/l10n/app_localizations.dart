@@ -391,6 +391,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your participation in \"{title}\" was cancelled.'**
   String cancelledMessage(String title);
+
+  /// No description provided for @addEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Add event'**
+  String get addEvent;
+
+  /// No description provided for @newEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'New event'**
+  String get newEvent;
+
+  /// No description provided for @fieldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get fieldTitle;
+
+  /// No description provided for @fieldCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get fieldCategory;
+
+  /// No description provided for @fieldImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Image'**
+  String get fieldImage;
+
+  /// No description provided for @fieldCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Capacity'**
+  String get fieldCapacity;
+
+  /// No description provided for @fieldDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description (optional)'**
+  String get fieldDescription;
+
+  /// No description provided for @requiredField.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get requiredField;
+
+  /// No description provided for @invalidCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number between 1 and 1000'**
+  String get invalidCapacity;
+
+  /// No description provided for @pastDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a date and time in the future'**
+  String get pastDate;
+
+  /// No description provided for @saveEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Save event'**
+  String get saveEvent;
+
+  /// No description provided for @eventAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" was added.'**
+  String eventAdded(String title);
+
+  /// No description provided for @deleteEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete event'**
+  String get deleteEvent;
+
+  /// No description provided for @deleteQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete this event?'**
+  String get deleteQuestion;
+
+  /// No description provided for @eventDeleted.
+  ///
+  /// In en, this message translates to:
+  /// **'\"{title}\" was deleted.'**
+  String eventDeleted(String title);
+
+  /// No description provided for @createdByYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Created by you'**
+  String get createdByYou;
+
+  /// No description provided for @noDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'No description.'**
+  String get noDescription;
 }
 
 class _AppLocalizationsDelegate
